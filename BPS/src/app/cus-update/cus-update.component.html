@@ -1,0 +1,179 @@
+<div class="container containermain">
+
+    <form class="well form-horizontal fm" (ngSubmit)="updateCustomer()"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<div style="text-align: center;"><legend><h2><b >Customer Updation</b></h2></legend><hr><br></div>
+<!-- Customer ID Select -->
+<div class="form-group">
+    <label class="col-md-4 control-label">Customer ID</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input  name="cus_id" placeholder="Enter id" [(ngModel)]="customerId" class="form-control"  type="text">
+      </div>
+    </div>
+  </div>
+  <div class="buttons" style="display: inline-block; align-content: center; margin-left: 35%;">
+    &nbsp;&nbsp;<button type="button" class="btn btn-warning" (click)="searchCustomer()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEARCH&nbsp;&nbsp;<span class="glyphicon glyphicon-search" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Customer Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="customer_name" placeholder="Customer Name" [(ngModel)]="customerName" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!--Address Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" >Address</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <textarea class="form-control" [(ngModel)]="address" name="address" placeholder="address.."></textarea>
+    </div>
+  </div>
+</div>
+<!--Contact no Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Contact No.</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="contact_num" placeholder="10 digit number" [(ngModel)]="contactNumber" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+<!--Country Text input-->
+  <div class="form-group"> 
+  <label class="col-md-4 control-label">Country</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="country" class="form-control selectpicker" [(ngModel)]="country" (ngModelChange)="getStates()">
+      <option selected="selected" disabled>{{country}}</option>
+      <option>India</option>
+      <option>USA</option>
+      <option>UK</option>
+      <option>Italy</option>
+    </select>
+  </div>
+</div>
+</div>
+<!--States Text input-->
+<div class="form-group"> 
+  <label class="col-md-4 control-label">State</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="states" class="form-control selectpicker" [(ngModel)]="state" >
+        <option selected="selected" disabled>{{state}}</option>
+        <option *ngFor="let so of stateObjs">{{so.state}}</option>
+    </select>
+  </div>
+</div>
+</div>
+  <!-- Email Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label">E-Mail</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input name="email" placeholder="E-Mail Address" [(ngModel)]="email" class="form-control"  type="text">
+      </div>
+    </div>
+  </div>
+ 
+
+<!-- Date Text input-->
+
+ <!--Vandor type Text input-->
+ <!-- <div class="form-group"> 
+  <label class="col-md-4 control-label">Vendor Type</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="ven_type" class="form-control selectpicker" [(ngModel)]="vendorType" (ngModelChange)="searchVendor()">
+        <option selected="selected" disabled>Water</option>
+        <option>Electricity</option>
+        <option>Water</option>
+        
+    </select>
+  </div>
+</div>
+</div> -->
+
+<!--Vendor Type Text input-->
+<div class="form-group"> 
+    <label class="col-md-4 control-label">Vendor Type</label>
+      <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <select name="vendorType" class="form-control selectpicker" [(ngModel)]="vendorType" (ngModelChange)="searchVendor()">
+        <option selected="selected" disabled>{{vendorType}}</option>
+        <option>Electricity</option>
+        <option>Telephone</option>
+        <option>Insurance</option>
+        <option >Tax</option>
+        
+      </select>
+    </div>
+  </div>
+  </div>
+
+<!--Vandor name Text input-->
+<div class="form-group"> 
+    <label class="col-md-4 control-label">Vendor Name</label>
+      <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <select name="ven_type" class="form-control selectpicker" [(ngModel)]="vendorName">
+          <option selected="selected" disabled>{{vendorName}}</option>
+          <option *ngFor="let vendor of vendors">{{vendor.vendorName}}</option>
+        
+      </select>
+    </div>
+  </div>
+  </div>
+<!--Balance Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" >Balance</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+  <input name="balance" placeholder="Balance" [(ngModel)]="balance" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Select Basic -->
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4 button1"><br>
+    <div class="buttons" style="display: inline-block;">
+        &nbsp;&nbsp;<button type="submit" class="btn btn-warning" >
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT <span class="glyphicon glyphicon-send"></span
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  <div class="buttons" style="display: inline-block;">
+      &nbsp;&nbsp;<button type="reset" class="btn btn-warning"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    <!-- /.container -->

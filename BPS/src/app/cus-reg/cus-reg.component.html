@@ -1,0 +1,252 @@
+<div class="container containermain" >
+
+    <form class="well form-horizontal fm" id="contact_form" (ngSubmit)="registerCustomer()" >
+<fieldset >
+
+<!-- Form Name -->
+<div style=" text-align: center;"><legend><h2><b >Customer Registration</b></h2></legend><hr><br></div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">First Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="First Name" class="form-control" [(ngModel)]="firstName"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Last Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="last_name" placeholder="Last Name" class="form-control" [(ngModel)]="lastName"  type="text">
+    </div>
+  </div>
+</div>
+<!--Address Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" >Address</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <textarea class="form-control" name="address" [(ngModel)]="address" placeholder="address.."></textarea>
+    </div>
+  </div>
+</div>
+<!--Contact no Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Contact No.</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="contact_num" placeholder="10 digit number" [(ngModel)]="contactNumber" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+<!--Country Text input-->
+  <div class="form-group"> 
+  <label class="col-md-4 control-label">Country</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="country" class="form-control selectpicker" [(ngModel)]="country" (ngModelChange)="getStates()">
+        <option selected="selected" disabled>select country</option>
+      <option>India</option>
+      <option >USA</option>
+      <option>UK</option>
+      <option>Italy</option>
+    </select>
+  </div>
+</div>
+</div>
+<!--States Text input-->
+<div class="form-group"> 
+  <label class="col-md-4 control-label">State</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="states" class="form-control selectpicker" [(ngModel)]="state">
+        <option value="">select state</option>
+        <option *ngFor="let so of stateObjs">{{so.state}}</option>
+      <!-- <option>Haryana</option>
+      <option>TN</option>
+      <option>Punjab</option>
+      <option >Rajasthan</option>
+      <option >Uttar Pradesh</option>
+      <option >Delhi</option> -->
+    </select>
+  </div>
+</div>
+</div>
+  <!-- Email Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label">E-Mail</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input name="email" placeholder="E-Mail Address" class="form-control" [(ngModel)]="email"  type="text">
+      </div>
+    </div>
+  </div>
+  <!--Documents Text input-->
+<div class="form-group"> 
+  <label class="col-md-4 control-label">IdDocument</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="idproof" class="form-control selectpicker" [(ngModel)]="idDocType">
+        <option value="" disabled>select Id Proof</option>
+      <option>VoterId</option>
+      <option>PAN</option>
+      <option>Aadhar</option>
+      <option >Driving License</option>
+      <option >Bank Copy</option>
+      <option >Passport</option>
+    </select>
+  </div>
+</div>
+</div>
+  
+<!-- Document Number Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Id Number</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+  <input  name="proofNo" [(ngModel)]="docNo" placeholder="Id Number" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Date Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Reg. Date</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group date">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+  <input name="reg_date" placeholder="Date" class="form-control" [(ngModel)]="regDate"  type="text" disabled>
+    </div>
+  </div>
+</div>
+ <!--Vandor type Text input-->
+ <div class="form-group"> 
+  <label class="col-md-4 control-label">Vendor Type</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="ven_type" class="form-control selectpicker" [(ngModel)]="vendorType" (ngModelChange)="searchVendor()">
+        <option selected="selected" disabled>select Vendor Type</option>
+      <option>Electricity</option>
+      <option>Telephone</option>
+      <option>Insurance</option>
+      <option >Tax</option>
+      
+    </select>
+  </div>
+</div>
+</div>
+<!--Vandor name Text input-->
+<div class="form-group"> 
+  <label class="col-md-4 control-label">Vendor Name</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="vendor_name" class="form-control selectpicker" [(ngModel)]="vendorName">
+        <option selected="selected" disabled>select Vendor Name</option>
+        <option *ngFor="let vo of vendorNamesObjs">{{vo.vendorName}}</option>
+      <!-- 
+        <option>ABC</option>
+        <option>Water</option>
+        <option>Aircel</option>
+        <option >Tax</option>
+       -->
+    </select>
+  </div>
+</div>
+</div>
+<!-- Card Number Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Card Number</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+  <input name="cardNo" placeholder="Card Number" class="form-control" [(ngModel)]="cardNo"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Card Type Text input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Card Type</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <select name="cardType"class="form-control" [(ngModel)]="cardType"  type="text">
+      <option selected="selected" disabled>select card type</option>
+      <option>Visa</option>
+      <option>Master</option>
+      <option>RuPay</option>
+      <option>AMEX</option>
+      </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Validity Date input-->
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Card Validity</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <input name="cardValidity"class="form-control" [(ngModel)]="cardValidity"  type="date">
+      </div>
+    </div>
+  </div>
+
+<!--Balance Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" >Balance</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+  <input name="balance" placeholder="Balance" [(ngModel)]="balance" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Select Basic -->
+
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4 button1"><br>
+    <div class="buttons" style="display: inline-block;">
+        &nbsp;&nbsp;<button type="submit" class="btn btn-warning">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT <span class="glyphicon glyphicon-send"></span
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  <div class="buttons" style="display: inline-block;">
+      &nbsp;&nbsp;<button type="reset" class="btn btn-warning"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    <!-- /.container -->

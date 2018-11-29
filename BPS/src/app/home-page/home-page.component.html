@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['./']"  href="#"> <img class="logo" src="" height="80" ><span style="font-size:30px">PayBill</span> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1">
+      <ul class="navbar-nav ml-auto"> 
+  <li class="nav-item active">
+  <a class="nav-link" [routerLink]="['./']" href="" style="font-size:18px">Home <span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item" style="font-size:18px"><a class="nav-link" [routerLink]="['./vendorregister']" href=""> Add Vendor </a></li>
+  <li class="nav-item" style="font-size:18px"><a class="nav-link" [routerLink]="['./vendorupdate']" href=""> Update Vendor </a></li>
+  <li class="nav-item" style="font-size:18px"><a class="nav-link" [routerLink]="['./customerregister']" href=""> Add Customer </a></li>
+  <li class="nav-item" style="font-size:18px"><a class="nav-link" [routerLink]="['./customerupdate']" href=""> Update Customer </a></li>
+  <li class="nav-item" style="font-size:18px"><a class="nav-link" [routerLink]="['./generatebill']" href=""> Generate Bill </a></li>
+
+  <li class="nav-item">
+  <a class="btn ml-2 btn-danger" (click)="logout()" href="" style="font-size:18px">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div>
+    <router-outlet></router-outlet>
+    
+  </div>

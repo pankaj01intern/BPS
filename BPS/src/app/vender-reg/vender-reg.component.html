@@ -1,0 +1,203 @@
+<div class="container containermain">
+
+    <form class="well form-horizontal fm" id="contact_form"  >
+  <fieldset style="">
+  
+  <!-- Form Name -->
+  <div style= "text-align: center;"><legend><h2><b >Vendor Registration</b></h2></legend><hr><br></div>
+  
+  <!--Vendor Name Text input-->
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label">Vendor Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="vendor_name" placeholder="enter name" class="form-control" [(ngModel)]="vendorName"  type="text">
+    </div>
+  </div>
+  </div>
+  
+  <!--Company Registration Number Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label">Company Registration Number</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-registration-mark"></i></span>
+    <input  name="reg_no" placeholder="registration number" class="form-control" [(ngModel)]="companyRegNo" type="text">
+      </div>
+    </div>
+    </div>
+  
+  <!--Vendor type Text input-->
+  <div class="form-group"> 
+    <label class="col-md-4 control-label">Vendor Type</label>
+      <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <select name="ven_type" class="form-control selectpicker" [(ngModel)]="vendorType">
+          <option value="" disabled selected>select vendor type</option>
+          <option>Electricity</option>
+          <option>Telephone</option>
+          <option>Insurance</option>
+          <option >Tax</option>
+      </select>
+    </div>
+    </div>
+    </div>
+  <!--Address Text input-->
+  <div class="form-group">
+  <label class="col-md-4 control-label" >Address</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <textarea class="form-control" name="address" [(ngModel)]="address" placeholder="address.."></textarea>
+    </div>
+  </div>
+  </div>
+  
+  <!--Country Text input-->
+  <div class="form-group"> 
+    <label class="col-md-4 control-label">Country</label>
+      <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <select name="country" class="form-control selectpicker" [(ngModel)]="country" (ngModelChange)="getStates()">
+          <option selected="selected" disabled>select country</option>
+          <option>India</option>
+          <option >USA</option>
+          <option>UK</option>
+          <option>Italy</option>
+      </select>
+    </div>
+    </div>
+    </div>
+    <!--States Text input-->
+  <div class="form-group"> 
+    <label class="col-md-4 control-label">State</label>
+      <div class="col-md-4 selectContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+      <select name="states" class="form-control selectpicker" [(ngModel)]="state">
+          <option value="">select state</option>
+          <option *ngFor="let so of stateObjs">{{so.state}}</option>
+      </select>
+    </div>
+    </div>
+    </div>
+    <!-- Email Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label">E-Mail</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input name="email" placeholder="E-mail address" class="form-control" [(ngModel)]="email" type="text">
+      </div>
+    </div>
+  </div>
+  <!--Contact no Text input-->
+       
+  <div class="form-group">
+  <label class="col-md-4 control-label">Contact No.</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="contact_num" placeholder="10 digit number" [(ngModel)]="contact" class="form-control" type="text">
+    </div>
+  </div>
+  </div>
+  
+  <!--Website Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label">Website</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+    <input  name="website" placeholder="website address" class="form-control" [(ngModel)]="website"  type="text">
+      </div>
+    </div>
+    </div>
+  <!-- Certificate Issue Date Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Certificate Issue Date</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group date">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input name="issue_date" placeholder="select date" class="form-control" [(ngModel)]="certIssueDate" type="text" disabled>
+      </div>
+    </div>
+    </div>
+  
+    <!-- Certificate Validity Date Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Certificate Validity Date</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group date">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input name="val_date" placeholder="valid till" class="form-control" [(ngModel)]="certValidityDate" type="text" disabled>
+      </div>
+    </div>
+    </div>
+  
+    <!-- Employee Count Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Employee Count</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input name="emp_count" placeholder="enter count" class="form-control" [(ngModel)]="empCount"  type="number" >
+      </div>
+    </div>
+    </div>
+  
+    <!-- Customer Count Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Customer Count</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group" >
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input name="cust_count" placeholder="enter count" [(ngModel)]="custCount" class="form-control"  type="number" >
+      </div>
+    </div>
+    </div>
+  
+    <!-- Year of Establishment Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Year of Establishment</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input name="yoe" placeholder="select year" class="form-control" [(ngModel)]="yearOfEstablishment"  type="number">
+      </div>
+    </div>
+    </div>
+  
+  <!-- Success message -->
+  <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+  
+  <!-- Button -->
+  <div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4 button1"><br>
+    <div class="buttons" style="display: inline-block;">
+        &nbsp;&nbsp;<button type="submit" class="btn btn-warning" (click)="registerVendor()" disabled>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REGISTER <span class="glyphicon glyphicon-thumbs-up"></span
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  <div class="buttons" style="display: inline-block;">
+      &nbsp;&nbsp;<button type="reset" class="btn btn-warning"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESET&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+  </div>
+  </div>
+  </div>
+  
+  </fieldset>
+  </form>
+  </div>
+    <!-- /.container -->

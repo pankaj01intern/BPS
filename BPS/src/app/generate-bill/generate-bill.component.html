@@ -1,0 +1,90 @@
+<div class="container containermain">
+
+    <form class="well form-horizontal fm" name="billform"  id="contact_form" >
+  <fieldset>
+  
+  <!-- Form Name -->
+  <div style="text-align: center;"><legend><h2><b >Bill Generation Form</b></h2></legend><hr><br></div>
+  <!-- Customer ID Select -->
+  <div class="form-group">
+    <label  class="col-md-4 control-label">Customer ID</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input required name="cus_id" placeholder="Enter id" class="form-control" [(ngModel)]="customerId"  type="text"  ><span class="input-group-addon" (click)="searchVendor()"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    </div>
+  </div>
+  <!-- Text input-->
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label">Vendor Type</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="vendor_type" placeholder="Vendor Type" [(ngModel)]="vendorType" class="form-control"  type="text" disabled>
+    </div>
+  </div>
+  </div>
+  
+  <!-- Text input-->
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" >Vendor Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="vendor_name" placeholder="Vender Name" [(ngModel)]="vendorName" class="form-control"  type="text" disabled>
+    </div>
+  </div>
+  </div>
+  <!--Address Text input-->
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Pending Amount</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <input name="pending_amount" placeholder="Pending Amount" [(ngModel)]="pendingAmount" class="form-control"  type="text" disabled>
+      </div>
+    </div>
+    </div>
+  <!--Contact no Text input-->
+  <div class="form-group">
+    <label  class="col-md-4 control-label" >Amount To Pay</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <input name="amount_to_pay" [(ngModel)]="amountToPay" placeholder="Enter the Amount" class="form-control"  type="number" [(ngModel)]='amount'  required >
+      </div>
+    </div>
+    </div>
+  
+  <!--Vandor type Text input-->
+  
+  <!-- DATE INPUT Text input-->
+  
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Pay Date</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group date" id="datetimepicker1">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input name="pay_date" placeholder="Date" [(ngModel)]="payDate" class="form-control"  type="text" disabled>
+      </div>
+    </div>
+  </div>
+  <!-- Select Basic -->
+  
+  <!-- Success message -->
+  <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+  
+  
+  
+  </fieldset>
+  </form>
+  </div>
+    <!-- /.container -->
+   <app-payment [price]='amountToPay' [customerId]='customerId' [vendorType]='vendorType' 
+   [vendorName]='vendorName' [pendingAmount]='pendingAmount'>
+  </app-payment> 

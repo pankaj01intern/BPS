@@ -1,0 +1,47 @@
+<div id="back">
+  <script type="text/javascript" src="../admin-login/JS/admin.js">
+  </script>
+ 
+
+
+
+  <h1 class="title-agile text-center" id="back">Bill Payment System</h1>
+  <div class="content-w3ls">
+      <div class="content-bottom">
+    <h2>Sign In Here</h2>
+          <form (ngSubmit)="validate()">
+              <div class="field-group">
+                  <span class="fa fa-user" aria-hidden="true"></span>
+                  <div class="wthree-field">
+                      <input name="text1" id="text1" type="text" [(ngModel)]="name" placeholder="enter user name" required>
+                  </div>
+              </div>
+              <div class="field-group">
+                  <span class="fa fa-lock" aria-hidden="true"></span>
+                  <div class="wthree-field">
+                      <input name="password"  id="myInput" type="Password" [(ngModel)]="password"  placeholder="enter the password">
+                  </div>
+              </div>
+            
+              <div class="wthree-field">
+                  <input id="saveForm" name="saveForm" type="submit" value="sign in" />
+              </div>
+           <ul class="list-login">
+                  <li class="switch-agileits">
+                  </li>
+                  <li>
+                      <a [routerLink]="['/reset-password']" href="" class="text-right">forgot password?</a>
+                  </li>
+                  <li class="clearfix"></li>
+              </ul> 
+
+          </form>
+      </div>
+  </div>
+  <div class="copyright text-center">
+      <p>© 2018 Cognizant Technologies Pvt. Ltd.
+      </p>
+  </div>
+</div>
+
+

@@ -1,0 +1,9 @@
+
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css';
+#success_message{ display: none;}
+#datetimepicker1 > span:hover{cursor: pointer;}
+.myStyle{
+    text-align: center;
+}
